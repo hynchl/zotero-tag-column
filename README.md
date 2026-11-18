@@ -8,6 +8,10 @@ A small Zotero plugin that adds a **Tags** column to the item list, so you can s
 
 - Shows all tags of an item in one column, separated by commas
 - Colored tags come first, in the order you assigned them; the rest are sorted alphabetically
+- **Click a Tags cell to edit tags** right from the list:
+  - Uncheck a tag to remove it
+  - Check a colored tag to add it
+  - Choose **Add Tag…** to type new tags (separate multiple tags with commas)
 - Hover over a cell to see the full tag list when it's truncated
 - Column width, visibility, and sort direction persist across restarts
 - Sortable like any other column
@@ -36,7 +40,7 @@ zip tag-column.xpi manifest.json bootstrap.js
 
 ## How it works
 
-The plugin uses Zotero's `Zotero.ItemTreeManager.registerColumn` API (Zotero 7+) to register a custom column in the main item tree. The column's data provider reads `item.getTags()` and orders them using the library's tag colors from `Zotero.Tags.getColors`. The column is unregistered when the plugin is disabled or removed.
+The plugin uses Zotero's `Zotero.ItemTreeManager.registerColumn` API (Zotero 7+) to register a custom column in the main item tree. The column's data provider reads `item.getTags()` and orders them using the library's tag colors from `Zotero.Tags.getColors`. Clicking a cell opens a popup menu built from the item's current tags and the library's colored tags; changes are saved with `item.saveTx()`, and the column refreshes automatically. Double-clicking a Tags cell does not open the attachment. Modifier clicks (Shift/Ctrl) are left alone so multi-selection still works. Everything is removed when the plugin is disabled or uninstalled.
 
 ## Compatibility
 
