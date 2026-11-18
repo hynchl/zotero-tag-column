@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Tag Column",
+  "version": "1.0.0",
+  "description": "Adds a Tags column to the Zotero item list.",
+  "author": "Hyunchul Kim",
+  "applications": {
+    "zotero": {
+      "id": "tag-column@local.plugin",
+      "update_url": "https://localhost.invalid/tag-column/updates.json",
+      "strict_min_version": "7.0",
+      "strict_max_version": "10.*"
+    }
+  }
+}
